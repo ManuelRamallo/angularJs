@@ -28,18 +28,18 @@
         <tr *ngFor="let articulo of articulos; index as i">
           <td>{{articulo.id}}</td>
 
-          <td><img src="{{articulo.foto}}" width="80px;"></td>
+          <td><img [src]="articulo.foto" width="80px;"></td>
 
           <td>{{articulo.descripcion}}</td>
 
-          <td>{{articulo.color}}</td>
+          <td>&nbsp;&nbsp;&nbsp;<span [ngStyle]="{backgroundColor: articulo.color}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
 
           <td>{{articulo.talla}}</td>
 
           <td>{{articulo.cantidad}} <button type="button" (click)="incrementarCantidad(articulo)">+</button>
             <button type="button" (click)="disminuirCantidad(articulo)"> - </button></td>
 
-          <td><p><del>{{articulo.precioGeneral}} €</del></p><p [ngStyle]="{color: getRebaja(articulo)}">{{articulo.precioRebaja * articulo.cantidad}} €</p></td>
+          <td><p><del>{{articulo.precioGeneral * articulo.cantidad}} €</del></p><p [ngStyle]="{color: getRebaja(articulo)}">{{articulo.precioRebaja * articulo.cantidad}} €</p></td>
           <td><button type="submit" class="btn btn-danger" (click)="articulos.splice(i,1)">Eliminar</button></td>
         </tr>
         </tbody>
